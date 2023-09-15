@@ -27,14 +27,11 @@
     methods: {
       async fetchPhotos() {
         try {
-          // Get 9 random photos from unsplash api
           const response = await axios.get(
-            "https://api.unsplash.com/photos/random?count=9&client_id=YOUR_ACCESS_KEY"
+            "https://api.unsplash.com/photos/random?count=9&client_id=Af-22R9C5Ra7DroQiRoqVuroD9nPfSiBd98eW8uLQUs"
           );
-          // Set the photos array to the response data
           this.photos = response.data;
         } catch (error) {
-          // Handle the error
           console.error(error);
         }
       },
