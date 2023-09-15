@@ -2,7 +2,7 @@
   <div class="home">
     <SearchBar />
     <div class="random-photos">
-      <img v-for="photo in photos" :key="photo.id" :src="photo.urls.small" :alt="photo.alt_description" />
+      <img v-for="photo in randomPhotos" :key="photo.id" :src="photo.urls.small" :alt="photo.alt_description" />
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@
     },
     data() {
       return {
-        photos: [],
+        randomPhotos: [],
       };
     },
     mounted() {
@@ -30,7 +30,7 @@
           const response = await axios.get(
             "https://api.unsplash.com/photos/random?count=9&client_id=Af-22R9C5Ra7DroQiRoqVuroD9nPfSiBd98eW8uLQUs"
           );
-          this.photos = response.data;
+          this.randomPhotos = response.data;
         } catch (error) {
           console.error(error);
         }
@@ -40,9 +40,10 @@
 </script>
 
 <style>
-.photos {
+.random-photos {
 display: flex;
 flex-wrap: wrap;
+border-top: 10px solid red;
 }
 
 .photos img {
