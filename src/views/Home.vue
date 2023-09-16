@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <SearchBar />
-    <div class="random-photos">
+    <SearchBar @hideRandomPhotos="hideHomePhotos" @showRandomPhotos="showHomePhotos" />
+    <div class="random-photos" v-if="showPhotos">
       <img v-for="photo in randomPhotos" :key="photo.id" :src="photo.urls.small" :alt="photo.alt_description" />
     </div>
   </div>
@@ -19,6 +19,7 @@
     data() {
       return {
         randomPhotos: [],
+        showPhotos: true,
       };
     },
     mounted() {
@@ -35,19 +36,25 @@
           console.error(error);
         }
       },
+      hideHomePhotos() {
+        this.showPhotos = false;
+      },
+      showHomePhotos() {
+        this.showPhotos = true;
+      },
     },
   }
 </script>
 
 <style>
-.random-photos {
-display: flex;
-flex-wrap: wrap;
-border-top: 10px solid red;
-}
+  .random-photos {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 10px solid red;
+  }
 
-.photos img {
-width: 33%;
-height: auto;
-}
+  .photos img {
+    width: 33%;
+    height: auto;
+  }
 </style>

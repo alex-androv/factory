@@ -1,11 +1,9 @@
 <template>
   <div class="search">
-    <form @submit.prevent="searchPhotos">
-      <input type="text" v-model="query" placeholder="Enter a keyword" />
-      <button type="submit">Search</button>
-    </form>
+    <input type="text" v-model="query" @input="searchPhotos" placeholder="Enter a keyword" />
+    <button type="submit">Search</button>
     <div class="photos">
-      <img v-if="photo" :src="photo.urls.small" :alt="photo.alt_description" />
+      <img v-for="photo in photos" :key="photo.id" :src="photo.urls.small" :alt="photo.alt_description" />
     </div>
   </div>
 </template>
@@ -18,21 +16,23 @@
     data() {
       return {
         query: "",
-        photo: null,
+        photos: [],
       };
     },
     methods: {
       async searchPhotos() {
         try {
-          // Get a random photo from unsplash api based on the query
           const response = await axios.get(
-            `https://api.unsplash.com/photos/random?query=${this.query}&client_id=Af-22R9C5Ra7DroQiRoqVuroD9nPfSiBd98eW8uLQUs`
+            `https://api.unsplash.com/search/photos?query=${this.query}&client_id=Af-22R9C5Ra7DroQiRoqVuroD9nPfSiBd98eW8uLQUs`
           );
-          // Set the photo to the response data
-          this.photo = response.data;
+          this.photos = response.data.results;
         } catch (error) {
-          // Handle the error
           console.error(error);
+        }
+        if (this.photos.length > 0) {
+          this.$emit("hideRandomPhotos");
+        } else if (this.photos.length === 0) {
+          this.$emit("showRandomPhotos");
         }
       },
     },
