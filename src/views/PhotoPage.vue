@@ -24,6 +24,12 @@
         created() {
             this.fetchPhoto();
         },
+        computed: {
+            isFavorite() {
+                const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+                return favorites.some((f) => f.id === this.photo.id);
+            },
+        },
         methods: {
             async fetchPhoto() {
                 try {
@@ -52,12 +58,12 @@
                 document.body.removeChild(link);
             },
             addToFavorites() {
-                // Add the photo to the favorites photos array
                 const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-                favorites.push(this.photo);
-                // Save the favorites photos array to the local storage
-                localStorage.setItem("favorites", JSON.stringify(favorites));
-            },
+                if (!this.isFavorite) {
+                    favorites.push(this.photo);
+                    localStorage.setItem("favorites", JSON.stringify(favorites));
+                }
+            }
         }
     }
 </script>
