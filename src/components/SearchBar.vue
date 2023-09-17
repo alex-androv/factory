@@ -3,7 +3,7 @@
     <input type="text" v-model="query" @input="searchPhotos" placeholder="Enter a keyword" />
     <button type="submit">Search</button>
     <div class="photos">
-      <img v-for="photo in photos" :key="photo.id" :src="photo.urls.small" :alt="photo.alt_description" />
+      <img v-for="photo in photos" :key="photo.id" :src="photo.urls.small" @click="$router.push(`/photo/${photo.id}`)" :alt="photo.alt_description" />
     </div>
   </div>
 </template>

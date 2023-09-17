@@ -4,18 +4,6 @@
     <div class="random-photos" v-if="showPhotos">
       <img v-for="photo in randomPhotos" :key="photo.id" :src="photo.urls.small" @click="$router.push(`/photo/${photo.id}`)" :alt="photo.alt_description" />
     </div>
-
-    <div v-if="selectedPhoto" class="info">
-      <h2>Photo Information</h2>
-      <p><strong>Id:</strong> {{ selectedPhoto.id }}</p>
-      <p><strong>Description:</strong> {{ selectedPhoto.description || "N/A" }}</p>
-      <p><strong>Created at:</strong> {{ selectedPhoto.created_at }}</p>
-      <p><strong>Updated at:</strong> {{ selectedPhoto.updated_at }}</p>
-      <p><strong>Likes:</strong> {{ selectedPhoto.likes }}</p>
-      <p><strong>User:</strong> {{ selectedPhoto.user.name }}</p>
-      <button @click="closeInfo">Close</button>
-    </div>
-
   </div>
 </template>
 
@@ -32,7 +20,6 @@
       return {
         randomPhotos: [],
         showPhotos: true,
-        selectedPhoto: null,
       };
     },
     mounted() {
