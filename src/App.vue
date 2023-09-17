@@ -4,7 +4,16 @@
     <router-link to="/favs">Избранное</router-link>
   </div>
   <router-view/>
+  <UpBtn />
 </template>
+
+<script>
+import UpBtn from '@/components/UpBtn.vue';
+
+export default {
+  components: {UpBtn},
+}
+</script>
 
 <style>
 #app {

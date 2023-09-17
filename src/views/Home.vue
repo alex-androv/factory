@@ -13,9 +13,7 @@
 
   export default {
     name: 'Home',
-    components: {
-      SearchBar
-    },
+    components: {SearchBar},
     data() {
       return {
         randomPhotos: [],

@@ -13,7 +13,6 @@
 </template>
 
 <script>
-
   export default {
     name: "Favs",
     data() {
