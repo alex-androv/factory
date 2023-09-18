@@ -1,24 +1,16 @@
 <template>
   <div class="search h-96 flex items-center justify-center mb-12">
-    <!-- <div class="flex">
-      <input type="text" v-model="query" @input="searchPhotos" placeholder="Поиск" />
-      <button type="submit">Search</button>
+    <div class="relative flex justify-between items-center bg-white px-6 py-5 w-11/12 lg:w-9/12">
+      <input type="text" v-model="query" @input="searchPhotos" placeholder="Поиск"
+        class="input text-2xl placeholder:text-black w-5/6">
       <img src="@/assets/search.svg">
-    </div> -->
-      <!-- <div class="mx-auto"> -->
-        <!-- <div class="flex justify-between items-center bg-white"> -->
-        <form class="relative flex justify-between items-center bg-white px-6 py-5">
-          <input type="text" v-model="query" @input="searchPhotos" placeholder="Поиск" class="input text-2xl placeholder:text-black">
-          <button type="submit" class=""><img src="@/assets/search.svg"></button>
-        </form>
-        <!-- </div> -->
-      <!-- </div> -->
-
-  </div>
-    <div class="photos flex flex-col sm:flex-row mx-5">
-      <img v-for="photo in photos" :key="photo.id" :src="photo.urls.small" @click="$router.push(`/photo/${photo.id}`)"
-        :alt="photo.alt_description" class="rounded-lg mb-5 cursor-pointer" />
     </div>
+  </div>
+  <div class="flex flex-col lg:grid lg:grid-cols-3 lg:gap-8 mx-5 mb-10">
+    <img v-for="photo in photos" :key="photo.id" :src="photo.urls.small" @click="$router.push(`/photo/${photo.id}`)"
+      :alt="photo.alt_description"
+      class="image w-full rounded-lg mb-5 lg:mb-0 cursor-pointer aspect-square object-cover" />
+  </div>
 </template>
 
 <script>
@@ -52,21 +44,12 @@
   };
 </script>
 
-<style scoped>
-  /* .photos {
-    display: flex;
-    justify-content: center;
-  }
-
-  .photos img {
-    width: 50%;
-    height: auto;
-  } */
-
+<style>
   .search {
     background: url("../assets/bg.jpg") no-repeat;
     background-size: cover;
   }
+
   .input {
     border: none;
     outline: inherit;

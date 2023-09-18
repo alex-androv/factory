@@ -1,11 +1,10 @@
 <template>
     <button v-show="isScrolled" @click="scrollToTop">
-        <div class="flex justify-center items-center w-12 h-12 border rounded-lg shadow-lg shadow-gray-400  ">
-            <img src="@/assets/up.svg" >
+        <div class="flex justify-center items-center w-12 h-12 border rounded-lg shadow-lg shadow-gray-400  bg-white">
+            <img src="@/assets/up.svg">
         </div>
     </button>
 </template>
-
 <script>
     export default {
         name: "App",

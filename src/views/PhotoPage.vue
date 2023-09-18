@@ -1,19 +1,28 @@
 <template>
-    <div class="mx-5">
+    <div class="px-5 lg:px-60 mb-10">
         <div v-if="photo" class="mb-8 mt-10 flex justify-between">
             <div class="flex items-center">
-                <img :src="photo.user.profile_image.small" :alt="photo.user.name"  class="w-12 h-12 rounded-lg mr-3"/>
+                <img :src="photo.user.profile_image.small" :alt="photo.user.name" class="w-12 h-12 rounded-lg mr-3" />
                 <div class="flex flex-col justify-center">
                     <p class="text-lg leading-4">{{ photo.user.name }}</p>
-                    <p class="text-sm text-gray-400 cursor-pointer"><a :href="photo.user.links.html">{{ userLink  }}</a></p>
+                    <p class="text-sm text-gray-400 cursor-pointer"><a :href="photo.user.links.html">{{ userLink  }}</a>
+                    </p>
                 </div>
             </div>
             <div class="">
-                <button @click="addToFavorites"><div class="flex justify-center items-center w-10 h-10 border rounded-lg shadow-lg shadow-gray-400 mr-4"><img src="@/assets/favs_blk.svg" ></div></button>
-                <button @click="downloadPhoto"><div class="flex justify-center items-center w-10 h-10 border rounded-lg shadow-lg shadow-gray-400 bg-yellow-300"><img src="@/assets/dwnld.svg" ></div></button>
+                <button @click="addToFavorites">
+                    <div
+                        class="flex justify-center items-center w-10 h-10 border rounded-lg shadow-lg shadow-gray-400 mr-4">
+                        <img src="@/assets/favs_blk.svg"></div>
+                </button>
+                <button @click="downloadPhoto">
+                    <div
+                        class="flex justify-center items-center w-10 h-10 border rounded-lg shadow-lg shadow-gray-400 bg-yellow-300">
+                        <img src="@/assets/dwnld.svg"></div>
+                </button>
             </div>
         </div>
-        <img :src="photo.urls.regular" :alt="photo.alt_description" class="rounded-lg cursor-pointer" />
+        <img :src="photo.urls.regular" :alt="photo.alt_description" class="rounded-lg lg:mx-auto" />
     </div>
 </template>
 

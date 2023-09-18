@@ -1,11 +1,9 @@
 <template>
-  <div class="home">
-    <SearchBar @hideRandomPhotos="hideHomePhotos" @showRandomPhotos="showHomePhotos" />
-    <div class="random-photos flex flex-col sm:flex-row mx-5" v-if="showPhotos">
-      <img v-for="photo in randomPhotos" :key="photo.id" :src="photo.urls.small" @click="$router.push(`/photo/${photo.id}`)" :alt="photo.alt_description"
-      class="rounded-lg mb-5 cursor-pointer"
-       />
-    </div>
+  <SearchBar @hideRandomPhotos="hideHomePhotos" @showRandomPhotos="showHomePhotos" />
+  <div class="flex flex-col lg:grid lg:grid-cols-3 lg:gap-8 mx-5 mb-10" v-if="showPhotos">
+    <img v-for="photo in randomPhotos" :key="photo.id" :src="photo.urls.small"
+      @click="$router.push(`/photo/${photo.id}`)" :alt="photo.alt_description"
+      class="image w-full rounded-lg mb-5 lg:mb-0 cursor-pointer aspect-square object-cover" />
   </div>
 </template>
 
@@ -15,7 +13,9 @@
 
   export default {
     name: 'Home',
-    components: {SearchBar},
+    components: {
+      SearchBar
+    },
     data() {
       return {
         randomPhotos: [],
@@ -47,16 +47,7 @@
 </script>
 
 <style>
-  /* .random-photos {
-    display: flex;
-    flex-wrap: wrap;
-    border-top: 10px solid red;
-    cursor: pointer;
-  } */
-
-  /* .photos img {
-    width: 33%;
-    height: auto;
-    cursor: pointer;
-  } */
+  .image {
+    aspect-ratio: 1 / 1;
+  }
 </style>
