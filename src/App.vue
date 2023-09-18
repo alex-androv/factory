@@ -1,39 +1,28 @@
 <template>
-  <div id="nav">
+  <Header />
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/favs">Избранное</router-link>
-  </div>
+  </div> -->
   <router-view/>
   <UpBtn />
 </template>
 
 <script>
+import Header from '@/components/Header.vue';
 import UpBtn from '@/components/UpBtn.vue';
 
 export default {
-  components: {UpBtn},
+  components: {Header, UpBtn},
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: Roboto, sans-serif;
+  /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  color: #2c3e50; */
 }
 </style>

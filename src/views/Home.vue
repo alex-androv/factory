@@ -1,8 +1,10 @@
 <template>
   <div class="home">
     <SearchBar @hideRandomPhotos="hideHomePhotos" @showRandomPhotos="showHomePhotos" />
-    <div class="random-photos" v-if="showPhotos">
-      <img v-for="photo in randomPhotos" :key="photo.id" :src="photo.urls.small" @click="$router.push(`/photo/${photo.id}`)" :alt="photo.alt_description" />
+    <div class="random-photos flex flex-col sm:flex-row mx-5" v-if="showPhotos">
+      <img v-for="photo in randomPhotos" :key="photo.id" :src="photo.urls.small" @click="$router.push(`/photo/${photo.id}`)" :alt="photo.alt_description"
+      class="rounded-lg mb-5 cursor-pointer"
+       />
     </div>
   </div>
 </template>
@@ -45,16 +47,16 @@
 </script>
 
 <style>
-  .random-photos {
+  /* .random-photos {
     display: flex;
     flex-wrap: wrap;
     border-top: 10px solid red;
     cursor: pointer;
-  }
+  } */
 
-  .photos img {
+  /* .photos img {
     width: 33%;
     height: auto;
     cursor: pointer;
-  }
+  } */
 </style>

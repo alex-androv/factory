@@ -1,5 +1,9 @@
 <template>
-    <button v-show="isScrolled" @click="scrollToTop">Up</button>
+    <button v-show="isScrolled" @click="scrollToTop">
+        <div class="flex justify-center items-center w-12 h-12 border rounded-lg shadow-lg shadow-gray-400  ">
+            <img src="@/assets/up.svg" >
+        </div>
+    </button>
 </template>
 
 <script>
@@ -33,7 +37,7 @@
 <style scoped>
     button {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 40px;
+        right: 40px;
     }
 </style>
