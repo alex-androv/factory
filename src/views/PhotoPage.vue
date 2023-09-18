@@ -40,22 +40,10 @@
                     const userLink = response.data.user.links.html;
                     const userLinkWithoutPrefix = userLink.replace("https://unsplash.com/", "");
                     this.userLink = userLinkWithoutPrefix;
+
                 } catch (error) {
                     console.error(error);
                 }
-            },
-            downloadPhoto() {
-                // Create a link element with the photo download url
-                const link = document.createElement("a");
-                link.href = this.photo.links.download;
-                // link.href = window.URL.createObjectURL(new Blob([response.data]));
-                link.download = true;
-                // Append the link to the document body and click it
-                // link.setAttribute('download', 'image.jpg')
-                document.body.appendChild(link);
-                link.click();
-                // Remove the link from the document body
-                document.body.removeChild(link);
             },
             addToFavorites() {
                 const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -63,7 +51,15 @@
                     favorites.push(this.photo);
                     localStorage.setItem("favorites", JSON.stringify(favorites));
                 }
-            }
+            },
+            downloadPhoto() {
+                const link = document.createElement("a");
+                link.href = this.photo.links.download;
+                link.download = true;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            },
         }
     }
 </script>
